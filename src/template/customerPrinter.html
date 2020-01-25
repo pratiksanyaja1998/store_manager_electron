@@ -1,0 +1,160 @@
+<div class="w3-row">
+
+    <div class="controlTopHome w3-col w3-margin-bottom  ">
+
+        <div class="w3-card w3-custom-teal w3-padding">
+
+            <table>
+                <tr>
+                    <td style="width:80%">
+                        <button class="w3-button  w3-light-grey" ng-click="print()">PRINT</button>
+
+
+                    </td>
+
+                    <td>
+                        <input class="w3-input w3-border w3-margin-right" style="width: 80px" ng-change="generateReports()" ng-model="filter.mm"
+                            type="number" placeholder="MM" min="1" max="12" />
+                    </td>
+
+                    <td>
+                        <input class="w3-input w3-border w3-margin-right" style="width: 80px" ng-model="filter.yyyy" ng-change="generateReports()"
+                            type="number" placeholder="YYYY" min="1890" max="9999" />
+                    </td>
+                    <td style="color:white;padding-left: 10px;padding-right: 10px">
+                        <strong>IN</strong>
+                    </td>
+                    <td>
+                        <input type="text" class="w3-input  " ng-change="getCustomerRepoToDatabase()" style="width: 250px;
+                            display: inline-block;" placeholder="Search Customer ..." ng-model="filter.searchInput" />
+                    </td>
+                    <td>
+                        <button class="w3-button  w3-light-grey w3-round-xlarge w3-margin-left" ng-click="generateReports()">Generate
+                            Reports
+                        </button>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+
+    <div class="print-view-bottom w3-padding ">
+
+        <div class="  w3-margin-top ">
+            <span class="w3-right">
+                <strong>
+                    <button class="w3-button w3-grey" ng-disabled="filter.offset<=0" ng-click="clickPrev()">&lt;</button>
+                    <span class="w3-margin-left w3-margin-right">{{filter.offset}}</span>
+                    <button class="w3-button w3-grey " ng-disabled='!filter.isNext' ng-click="clickNext()">&gt;</button>
+                </strong>
+            </span>
+            </strong>
+        </div>
+
+
+        <div class="w3-col l12 w3-border w3-margin-top hide-print" style="overflow-y: auto;max-height:200px">
+
+            <div class="w3-col l3 w3-center" ng-repeat="customerRow in customer">
+                <div class="block-serach-result" style="height: 66px;" ng-click="selectCustomerIntoSearchData(customerRow)">
+                    <span class="nameCase">{{customerRow.name}}</span>
+                    <br/>
+                    <span>
+                        <small>{{customerRow.phno}}</small>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- store info -->
+        <div class="w3-col">
+
+        </div>
+
+        <!-- reports info -->
+        <div class="w3-col">
+
+            <div class="w3-border w3-margin-top w3-custom-gray-text" ng-repeat="row in  reports track by $index " ng-if='reports'>
+
+                <!-- customer info -->
+                <div class="w3-padding">
+
+                    <div class="nameCase">
+                        <span ng-if="row.customer.name!=''">
+                            <b>Customer Name :-</b> {{row.customer.name}}
+
+                        </span>
+
+                        <span ng-if="row.customer.phno!=''">
+                            <b><br/>Customer Mobile Number :- </b> +91 {{row.customer.phno}} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span ng-if="row.customer.gstin!=''">
+                            <b>Customer GSTIN :-</b> {{row.customer.gstin}}
+
+                        </span>
+                    </div>
+
+                    <div class=" nameCase" style="width: 47%;display: inline-block;" ng-if="row.customer.barea || row.customer.bcity || row.customer.bstate || row.customer.bpincode">
+                        <div class="w3-custom-teal w3-padding w3-margin-top">
+                            <b>Billing Address</b>
+                        </div>
+                        <div class="w3-padding" style="padding-top: 5px;padding-left: 5px">
+                            {{row.customer.barea}}, {{row.customer.bcity}}, {{row.customer.bstate}} {{row.customer.bpincode}}
+
+                        </div>
+                    </div>
+
+                    <div  style="width: 2%;display: inline-block;"></div>
+
+                    <div class="nameCase w3-right" style="width: 48%;display: inline-block;" ng-if="row.customer.darea || row.customer.dcity || row.customer.dstate || row.customer.dpincode">
+                        <div class="w3-custom-teal w3-padding w3-margin-top">
+                            <b>Delivery Address</b>
+                        </div>
+                        <div class="w3-padding" style="padding-top: 5px;padding-left: 5px">
+                            {{row.customer.darea}}, {{row.customer.dcity}}, {{row.customer.dstate}} {{row.customer.dpincode}}
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- invoice info -->
+                <div class="w3-padding" ng-if='row.invoice.length>0'>
+
+                    <table class="w3-table-all  w3-hoverable w3-centered">
+
+                        <tr class="w3-custom-teal">
+                            <th width="100px">Sr.No</th>
+                            <th>Total</th>
+                            <th>Dis.(%)</th>
+                            <th>Pay.Methord</th>
+                            <th>Created_At</th>
+                        </tr>
+
+                        <tr ng-repeat="row in row.invoice  track by $index ">
+                            <td width="100px">{{row.srno}}</td>
+                            <td>{{row.total}}</td>
+                            <td>{{row.discount}}</td>
+                            <td>{{row.paymentMethrd}}</td>
+                            <td>{{row.created_at}}</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>

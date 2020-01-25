@@ -1,0 +1,27 @@
+
+body{
+    background-color: #05594e;
+    color: rgb(255, 255, 255);
+    
+}
+
+.header{
+    text-align: center
+}
+.mainDiv{
+
+}
+
+#myProgress {
+    margin: auto;
+    width: 95%;
+    background-color: white;
+    /* border: 1px solid black; */
+    position: absolute;
+    bottom:10px;
+}
+#myBar {
+    width: 5%;
+    height: 20px;
+    background-color: green;
+}

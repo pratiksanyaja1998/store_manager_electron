@@ -1,0 +1,43 @@
+{
+    "name": "StoreManager",
+    "version": "1.0.1",
+    "description": "Manager Your Retail Shope ...",
+    "main": "main.js",
+    "email": "spyhunter272help@gmail.com",
+    "homepage": "./",
+    "scripts": {
+        "postinstall": "electron-builder install-app-deps",
+        "start": "electron .",
+        "build": "electron-packager .",
+        "rebuild": "electron-rebuild -f -w sqlite3",
+        "pack": "build --dir",
+        "dist": "build"
+    },
+    "repository": "",
+    "keywords": [],
+    "author": "SPYHUNTER272 <spyhunter272help@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "^5.0.2",
+        "electron-builder": "^20.41.1",
+        "electron-packager": "^13.1.1",
+        "electron-rebuild": "^1.8.5"
+    },
+    "dependencies": {
+        "jquery": "^3.3.1",
+        "knex": "^0.15.2",
+        "sqlite3": "^4.0.2"
+    },
+    "build": {
+        "appId": "spyhunter272.storemanager.in",
+        "linux": {
+            "target": "deb",
+            "category": "bussiness",
+            "icon": "src/assets/app.png"
+        },
+        "win": {
+            "target": "NSIS",
+            "icon": "src/assets/app.png"
+        }
+    }
+}

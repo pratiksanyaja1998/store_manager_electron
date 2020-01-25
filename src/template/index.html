@@ -1,0 +1,101 @@
+<div class="w3-row">
+
+
+    <div class="w3-col w3-margin-bottom">
+
+        <table class="w3-left w3-margin-right">
+
+            <tr>
+                <td>MM</td>
+                <td>
+                    <input class="w3-input w3-border" ng-model="mm" style="width: 65px ;" ng-change="changeDate()" type="number" placeholder="MM"
+                        min="1" max="12" />
+                </td>
+                <td>YYYY</td>
+                <td>
+                    <input class="w3-input w3-border" ng-model="yyyy" style="width: 80px;" type="number" ng-change="changeDate()" placeholder="YYYY"
+                        min="1890" max="9999" />
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="w3-card w3-col">
+
+        <div class="w3-bar w3-custom-bar-block" style=" opacity: 0.7; color: white ">
+            <button class="w3-bar-item w3-button w3-gray active-overviewTab" onclick="openOverViewTab(this,'Home')" style="width: 50%">Overview
+                <small>(Selected Year)</small></button>
+            <button class="w3-bar-item w3-button w3-gray" onclick="openOverViewTab(this,'Total')" style="width: 50%">Total <small>(Selected
+                    Month)
+                </small></button>
+        </div>
+
+        <div id="Home" class="w3-container w3-border w3-display-container overviewTab">
+            <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+            <canvas id="myChart" width="100%" height="35px"></canvas>
+
+
+        </div>
+
+
+        <div id="Total" class="w3-container w3-border w3-display-container overviewTab" style="display:none;">
+            <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+            <div class="overview-cal-div w3-center" style="    margin: 50px;">
+                <span class="income-label w3-button"> {{overView.income.toFixed(2)}} Rs./- </span>
+
+                -
+
+                <span class="expance-label w3-button"> {{overView.expance.toFixed(2)}} Rs./- </span>
+
+                =
+
+                <span class="total-label w3-button">{{(overView.income-overView.expance).toFixed(2)}} Rs./-</span>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="w3-margin-top w3-card-4 w3-col l12">
+        <ul class="w3-ul">
+            <li>
+                <div class="w3-panel ">
+                    <span class="settingTag w3-left" style="padding: 8px;">Products Reports</span>
+
+                    <button class="w3-button w3-right w3-custom-teal w3-margin-left"
+                    onclick="clickOpenPrint('products')">Generate</button>
+                </div>
+            </li>
+            <li>
+                <div class="w3-panel ">
+                    <span class="settingTag w3-left" style="padding: 8px;">Customer Reports</span>
+
+                    <button class="w3-button w3-right w3-custom-teal w3-margin-left"
+                    onclick="clickOpenPrint('customer')">Generate</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="w3-margin-top w3-card-4 w3-col l12">
+        <ul class="w3-ul">
+            <li>
+                <div class="w3-panel ">
+                    <span class="settingTag w3-left" style="padding: 8px;">Income / Expenses Reports</span>
+
+                    <button class="w3-button w3-right w3-custom-teal w3-margin-left"
+                    onclick="clickOpenPrint('income-expance')"
+                    >Generate</button>
+                </div>
+            </li>
+         
+        </ul>
+    </div>
+
+
+</div>

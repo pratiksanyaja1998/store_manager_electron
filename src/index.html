@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html ng-app="StoreApp" ondragstart="return false;">
+
+<head>
+
+    <title>Store Manager</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" href="lib/w3.css">
+
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- javascript -->
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/Chart.bundle.min.js"></script>
+
+    <!-- javascript controller -->
+    <script src="js/index.js"></script>
+
+</head>
+
+<body class="w3-light-grey">
+
+    <!-- lodding bar -->
+    <div class="loading-root " ng-if="isWaiting">
+        <div class="loading-text w3-center">
+            <strong> Loading </strong>
+        </div>
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- containt -->
+    <div ng-hide="isWaiting">
+
+
+
+        <div class=" w3-row theme-nav  w3-padding w3-custom-teal" style=" width: 22%; height: 100%;position: absolute; overflow: auto;">
+
+
+                <div class="  w3-margin-top  w3-custom-bar-block w3-center">
+                        <span>
+                            <i class="material-icons w3-button w3-circle w3-custom-teal " ng-click="showFullScreen()">fullscreen</i>
+        
+                        </span>
+                        <span>
+                            <i class="material-icons w3-button w3-circle w3-custom-teal " ng-click="refresh()">refresh</i>
+        
+                        </span>
+                        <span>
+                            <i class="material-icons w3-button w3-circle w3-custom-teal " ng-click="closeWindow()">close</i>
+        
+                        </span>
+                    </div>
+
+
+            <div class=" w3-margin-bottom w3-custom-bar-block  w3-margin-top w3-center ">
+
+
+                <img ng-src="{{storeInfo.logo}}" class="  w3-image " style="max-height: 150px; padding: 5px;background-color: rgba(245, 245, 245, 0);"
+                />
+
+
+
+
+            </div>
+
+
+
+            <div class="w3-bar-block w3-custom-bar-block w3-margin-top ">
+
+                <strong>
+                    <div class="w3-border-bottom" ng-hide="isHideAuthNav">
+                        <a href="#!index" class="w3-bar-item  w3-button w3-padding " ng-class="{true: 'w3-custom-teal'}[location == '/index']">
+                            <i class="fa fa-pie-chart fa-fw"></i> Overview<small class="w3-right"><small>(alt+1)</small></small></a>
+                        <a href="#!customer" class="w3-bar-item w3-button  w3-padding" ng-class="{true: 'w3-custom-teal'}[location == '/customer']">
+                            <i class="fa fa-users fa-fw"></i> Customer<small class="w3-right"><small>(alt+2)</small></small>
+                        </a>
+                        <a href="#!products" class="w3-bar-item w3-button  w3-padding" ng-class="{true: 'w3-custom-teal'}[location == '/products']">
+
+
+                            <i class="fa fa-shopping-bag fa-fw"></i> Products<small class="w3-right"><small>(alt+3)</small></small>
+
+                        </a>
+
+                        <a href="#!invoice" class="w3-bar-item w3-button  w3-padding" ng-class="{true: 'w3-custom-teal'}[location == '/invoice']">
+                            <i class="fa fa-print fa-fw"></i> Invoice <small class="w3-right"><small>(alt+4)</small></small>
+                        </a>
+                        <a href="#!expance" class="w3-bar-item  w3-button w3-padding" ng-class="{true: 'w3-custom-teal'}[location == '/expance']">
+                            <i class="fa fa-rupee fa-fw"></i> Expense <small class="w3-right"><small>(alt+5)</small></small></a>
+
+                    </div>
+                </strong>
+                <strong>
+                    <a href="#!settings" class="w3-bar-item w3-button   w3-padding " style="margin-top: 5px;background-color: rgba(245, 245, 245, 0);"
+                        ng-class="{true: 'w3-custom-teal'}[location == '/settings']">
+                        <i class="fa fa-cog fa-fw"></i> Settings</a>
+                    <a href="#!help" class="w3-bar-item w3-button w3-padding  " style="background-color: rgba(245, 245, 245, 0);" ng-class="{true: 'w3-custom-teal'}[location == '/help']">
+                        <i class="fa fa-question-circle fa-fw"></i> Help</a>
+                </strong>
+
+            </div>
+
+
+       
+
+
+        </div>
+
+
+        <div style="left:22%; padding: 10px;width: 78%; height: 100%; position: absolute; overflow-y:scroll;" ng-view>
+
+            <!-- !PAGE CONTENT! -->
+            <!-- End page content -->
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

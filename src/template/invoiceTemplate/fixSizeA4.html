@@ -1,0 +1,207 @@
+<div class="A4  w3-padding">
+
+    <table class="w3-border" style=" background-color: #f5f5d1;   width: 100%; height: 100%;">
+
+        <!-- header -->
+        <tr>
+            <td class="w3-border-bottom">
+                <table width="100%" style="  font-weight: 600;
+                color: #613b3b;    line-height: 1.2;">
+                    <tr>
+                        <td width="100px" class="w3-left">
+                            <img style="max-width:100px" src="../../storeLogo.png" />
+                        </td>
+                        <td width="65%" class="w3-center">
+                            <span class="theme-red-text"> <strong><big><big> {{storeInfo.storename}}</big></big></strong></span><br/><br/>
+                            <small><span ng-show="storeInfo.gstin!='' "> <strong> GSTIN :- </strong> {{storeInfo.gstin}}</span>
+                                <span ng-show="storeInfo.phno!=''"> <br/> <strong> MO :-</strong> <i class="fa fa-phone"></i>
+                                    +91 {{storeInfo.phno}}</span></small>
+                        </td>
+                        <td>
+                            <small> <span class="theme-red-text"><b>INVOICE NO :-</b></span> {{invoiceData.invoice.srno}}<br/>
+                                <span class="theme-red-text"><b>DATE :-</b></span> {{invoiceData.invoice.dd}} / {{invoiceData.invoice.mm}}
+                                / {{invoiceData.invoice.yyyy}}
+
+                                <span ng-show=" storeInfo.area!='' || storeInfo.city!='' || storeInfo.state!='' || storeInfo.pincode!='' ">
+                                    <br/><i class="material-icons" style="font-size:15px">edit_location</i>
+                                    <span ng-show="storeInfo.area!=''">{{storeInfo.area}},</span><br/>
+                                    <span ng-show="storeInfo.city!=''"> {{storeInfo.city}},</span>
+                                    <span ng-show="storeInfo.state!=''"> {{storeInfo.state}}</span><br/>    
+                                    <span ng-show="storeInfo.pincode!=''">-{{storeInfo.pincode}}</span>
+
+                                </span>
+                            </small>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- customer -->
+        <tr>
+            <td>
+                <table width="100%" style=" margin-top:20px ;margin-bottom: 20px;    font-weight: 600;
+                color: #613b3b;   line-height: 1.4;">
+                    <!-- name info -->
+                    <tr>
+                        <td>
+                            <br/>
+                            <span class="w3-margin-top" ng-if="invoiceData.invoice.name!=''">
+                                <span class="theme-red-text"> <b>
+                                        Customer Name :-</b></span> {{invoiceData.invoice.name}}
+
+                            </span>
+
+                            <span ng-if="invoiceData.invoice.phno!='' && invoiceData.invoice.phno!=null ">
+                                <span class="theme-red-text"><b><br/> Mobile Number :- </b></span> <i class="fa fa-phone"></i>
+                                +91 {{invoiceData.invoice.phno}}
+                            </span>
+                            <span ng-if="invoiceData.invoice.gstin!=''">
+                                <span class="theme-red-text"><b><br/> Customer GSTIN :-</b></span> {{invoiceData.invoice.gstin}}
+                            </span>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <!-- billing shipping -->
+                    <tr>
+                        <td width="50%" ng-if="invoiceData.invoice.barea">
+
+                            <div class="theme-red w3-padding w3-margin-top">
+                                <b>Billing Address</b>
+                            </div>
+                            <div class="w3-padding" style="padding-top: 5px;padding-left: 5px">
+                                {{invoiceData.invoice.barea}}, {{invoiceData.invoice.bcity}}, {{invoiceData.invoice.bstate}} {{invoiceData.invoice.bpincode}}
+
+                            </div>
+                        </td>
+                        <td width="50%" ng-if="invoiceData.invoice.darea">
+                            <div class="theme-red w3-padding w3-margin-top">
+                                <b>Delivery Address</b>
+                            </div>
+                            <div class="w3-padding" style="padding-top: 5px;padding-left: 5px">
+                                {{invoiceData.invoice.darea}}, {{invoiceData.invoice.dcity}}, {{invoiceData.invoice.dstate}} {{invoiceData.invoice.dpincode}}
+
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <!-- products -->
+        <tr height="100%">
+            <td>
+                <table height="100%" class="w3-table w3-border-bottom w3-centered    " style=" margin-top:20px ;margin-bottom: 20px;  font-weight: 600;
+                    color: #613b3b;    line-height: 1.2;">
+
+                    <tr class="theme-red">
+                        <th>ID</th>
+                        <th>ITEMS</th>
+                        <th>HSN</th>
+                        <th>PRICE</th>
+                        <th>QTY</th>
+                        <!-- <th>DIS.(%)</th> -->
+                        <th ng-show="invoiceData.invoice.gst==0 && invoiceData.invoice.gsttype=='GST'">CGST(%)</th>
+                        <th ng-show="invoiceData.invoice.gst==0 && invoiceData.invoice.gsttype=='GST'">SGST(%)</th>
+                        <th ng-show="invoiceData.invoice.gst==0 && invoiceData.invoice.gsttype=='IGST'">IGST(%)</th>
+                        <th>TOTAL</th>
+                    </tr>
+
+                    <tr ng-repeat="row in invoiceData.invoiceProducts">
+                        <td>{{$index+1}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.hsn}}</td>
+                        <td>{{row.price}}</td>
+                        <td>{{row.qty}}</td>
+                        <!-- <td>{{row.discount}} %</td> -->
+                        <td ng-show="invoiceData.invoice.gst==0 && invoiceData.invoice.gsttype=='GST'">{{row.gst/2}} %</td>
+                        <td ng-show="invoiceData.invoice.gst==0 && invoiceData.invoice.gsttype=='GST'">{{row.gst/2}} %</td>
+                        <td ng-show="invoiceData.invoice.gst==0 && invoiceData.invoice.gsttype=='IGST'">{{row.gst}} %</td>
+                        <td>{{row.total}}</td>
+                    </tr>
+                    <tr height="100%">
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <!-- <th>DIS.(%)</th> -->
+                        <th ng-show="invoiceData.invoice.gst==0 && invoiceData.invoice.gsttype=='GST'"></th>
+                        <th ng-show="invoiceData.invoice.gst==0 && invoiceData.invoice.gsttype=='GST'"></th>
+                        <th ng-show="invoiceData.invoice.gst==0 && invoiceData.invoice.gsttype=='IGST'"></th>
+                        <th></th>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+
+
+        <!-- total -->
+        <tr>
+            <td>
+                <table style="  margin-top:5px ;margin-bottom: 5px;    font-weight: 600;
+               color: #613b3b;   line-height: 1.4;">
+                    <tr>
+                        <td style="text-align:center;" width="80%">
+
+                            <b> {{invoiceData.invoice.totalInWord.toUpperCase()}} ONLY /-</b>
+
+                        </td>
+                        <td>
+
+                            <table width="273px" style="     font-weight: 600;
+                            color: #613b3b;   line-height: 1.4;">
+                                <tr>
+                                    <td style="text-align: right; padding:10px ">
+                                        <span> <b>DISCOUNT(%) :-</b></span><br/>
+                                        <span ng-hide="invoiceData.invoice.gst==0"> <b>{{invoiceData.invoice.gsttype}}(%) :-</b><br/></span>
+                                        <span> <b>TOTAL :-</b></span><br/>
+
+
+                                    </td>
+                                    <td style="text-align: right; padding:10px ">
+
+                                        (-){{invoiceData.invoice.discount}}%<br/>
+                                        <span ng-hide="invoiceData.invoice.gst==0">
+                                            {{invoiceData.invoice.gst}} %<br/></span>
+                                        {{invoiceData.invoice.total}}/-<br/>
+
+
+
+                                    </td>
+                                </tr>
+
+                            </table>
+
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+
+                <div class="theme-red w3-padding w3-margin-top">
+                    <b>Discription</b>
+                </div>
+                <div class="theme-red-text w3-right " style="width: 100%">
+                    <br/>
+                    <br/><br/><br/><br/>
+                    <span class="w3-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________________Sign</span>
+                </div>
+
+            </td>
+
+        </tr>
+
+
+    </table>
+
+</div>
