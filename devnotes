@@ -1,0 +1,38 @@
+
+
+1. electron sqlite :- https://github.com/patrickmoffitt/local-sqlite-example
+https://www.youtube.com/watch?v=c76FTxLRwAw&list=PLLGogsZKbxorjjEYvtsZa980zHryW31Lq&index=2
+
+2. angularJS tutorial :- https://www.youtube.com/watch?v=nO1ROKMjPqI&list=PLvZkOAgBYrsS_ugyamsNpCgLSmtIXZGiz&index=1
+
+3. https://github.com/Cocycles/electron-storage
+
+4. build package :- https://medium.com/how-to-electron/a-complete-guide-to-packaging-your-electron-app-1bdc717d739f
+
+https://github.com/electron-userland/electron-builder/issues/718
+
+5. knex migrations :- https://alexzywiak.github.io/running-migrations-with-knex/index.html
+    runtime https://stackoverflow.com/questions/43919637/knex-migrate-latest-programmatically
+
+6. custom template render :- https://docs.angularjs.org/api/ng/directive/ngInclude
+
+7. card swipe :-
+https://stackoverflow.com/questions/19212228/how-to-execute-a-winform-when-card-is-swiped-on-a-card-swipe-machine
+
+https://stackoverflow.com/questions/5603456/how-can-i-gathering-swipe-card-information-using-vb-winforms-app
+
+https://stackoverflow.com/questions/21421430/use-stripe-with-card-swipe-reader
+
+https://stackoverflow.com/questions/51718261/how-to-get-reference-number-or-other-details-for-my-billing-software-when-card-s
+
+
+https://stackoverflow.com/questions/3720748/linux-background-card-swipe-reader
+
+
+
+printing
+
+https://github.com/Klemen1337/node-thermal-printer
+https://www.youtube.com/watch?v=MQMD4Pb7jzY
+
+https://github.com/song940/node-escpos
