@@ -1,4 +1,4 @@
-## Store Manager Desktop app
+## Retail Manager Desktop App
 
 electron, knex, sqlite, angularJS
 
