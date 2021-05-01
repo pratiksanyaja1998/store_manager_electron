@@ -5,7 +5,7 @@ module.exports = ["$scope", "$rootScope", function ($scope, $rootScope) {
 
     $scope.clickMoreInfo = ()=>{
         // event.preventDefault();
-        shell.openExternal("http://spyhunter272.in/#contact");
+        shell.openExternal("http://spyhunteritsolution.in");
     }
 
 }];

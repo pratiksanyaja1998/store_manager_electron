@@ -1,0 +1,4 @@
+appId: retail.spyhunteritsolution.in
+publish:
+  provider: github
+  token: []
